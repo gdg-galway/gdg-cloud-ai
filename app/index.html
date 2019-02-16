@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GDG Cloud API Tutorial</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        @keyframes rotate {
+            from {
+                transform: rotateZ(0deg);
+            }
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        * {
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button,
+        .loader {
+            width: 96px;
+            height: 96px;
+            background: none;
+            border: 2px solid #039be5;
+            border-radius: 50%;
+            color: #039be5;
+            cursor: pointer;
+        }
+
+        .loader {
+            border-right: none;
+            border-bottom: none;
+            animation: rotate .5s infinite;
+        }
+
+        button .material-icons {
+            font-size: 32px;
+        }
+
+        #stop,
+        .loader,
+        .result,
+        .finished #start,
+        .recording #start {
+            display: none;
+        }
+
+        .recording:not(.loading) #stop,
+        .finished .result,
+        .loading .loader {
+            display: block;
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .result pre {
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        #sentiments {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        #sentiments .sentiment {
+            width: 50%;
+            padding: 8px 16px;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="start">
+        <i class="material-icons">mic</i>
+    </button>
+    
+    <button id="stop">
+        <i class="material-icons">mic_off</i>
+    </button>
+
+    <div class="loader"></div>
+
+    <div class="result">
+        <audio id="audio" controls></audio>
+        <pre id="transcript"></pre>
+        <div id="sentiments"></div>
+        <button id="reset">
+            <i class="material-icons">autorenew</i>
+        </button>
+    </div>
+
+    <script>
+        if (!window.MediaRecorder) {
+            document.write(decodeURI('%3Cscript src="/js/polyfill.js">%3C/script>'))
+        }
+    </script>
+    <script>
+        const startBtn = document.getElementById('start')
+        const stopBtn = document.getElementById('stop')
+        const resetBtn = document.getElementById('reset')
+        const player = document.getElementById('audio')
+        const transcript = document.getElementById('transcript')
+        const sentiments = document.getElementById('sentiments')
+
+        /* Your code goes here */
+    </script>
+    
+</body>
+</html>
