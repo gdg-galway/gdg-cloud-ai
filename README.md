@@ -34,7 +34,9 @@ const app = express()
 
 // The static content will be served from the "app" folder
 app.use(express.static(__dirname + '/app'))
-app.listen(process.env.PORT || 8888, () => console.log('Server on!'))
+
+const PORT = process.env.PORT || 8888
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 ```
 
 ### Record a sample
@@ -240,7 +242,7 @@ res.json(result)
 
 ### Test our work
 
-You can try test your code by launching your web server with the command `node index.js` and navigate to http://localhost:8888. You can now use our simple interface to perform your tests. If an error occurs it will be displayed in the console (on the front-end) or in the terminal if the error occurs in the back-end.
+You can try test your code by launching your web server with the command `node index.js` and navigate to http://localhost:PORT_NUMBER (default `PORT_NUMBER` is `8888`). You can now use our simple interface to perform your tests. If an error occurs it will be displayed in the console (on the front-end) or in the terminal if the error occurs in the back-end.
 
 ### Deploy your application on Google Cloud Platform
 
