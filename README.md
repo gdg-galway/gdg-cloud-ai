@@ -1,6 +1,6 @@
 # Google Cloud AI APIs
 
-The goal of this tutorial is to write a simple web app that records a small audio sample, extract the transcript using the Speech-to-Text API, send the result to the Natural Language API to get the sentiment analysis on the content of our audio sample, and we will finally return it to the front-end and format the result. Once our web app ready, we'll deploy it on App Engine using the GCloud SDK.
+The goal of this tutorial is to write a simple web app that records a small audio sample, extract the transcript using the Speech-to-Text API, send the result to the Natural Language API to get the sentiment analysis on the content of our audio sample, and we will finally return it to the front-end and format the result. Once our web app ready, we'll deploy it on Google AppEngine using the GCloud SDK.
 
 ### Required dependencies
 
@@ -34,7 +34,7 @@ const app = express()
 
 // The static content will be served from the "app" folder
 app.use(express.static(__dirname + '/app'))
-app.listen(8888, () => console.log('Server on!'))
+app.listen(process.env.PORT || 8888, () => console.log('Server on!'))
 ```
 
 ### Record a sample
