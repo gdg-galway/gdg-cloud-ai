@@ -93,8 +93,10 @@ async function startRecording() {
             sentiments.innerHTML = result.entities.reduce((html, entity) => {
                 return html + `<div class="sentiment">
                     ${entity.name}<br>
+                    <b>Type:</b> ${entity.type}<br>
                     <b>Score:</b> ${entity.sentiment.score.toFixed(2)}<br>
-                    <b>Magnitude:</b> ${entity.sentiment.magnitude.toFixed(2)}
+                    <b>Magnitude:</b> ${entity.sentiment.magnitude.toFixed(2)}<br>
+                    <b>Salience:</b> ${entity.salience.toFixed(2)}
                 </div>`
             }, '')
             document.body.classList.add('finished')
@@ -210,7 +212,7 @@ const [response] = await speechClient.recognize({
 // Clean up
 await fs.unlink(path)
 // Regroups the returned strings in one block of text
-const transcription = response.results.map(result => result.alternatives[0].transcript).join('\n')
+const transcription = response.results.map(result => result.alternatives[0].transcript.trim()).join('\n')
 ...
 ```
 
