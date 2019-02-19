@@ -128,9 +128,10 @@ So now our audio recording is heading to our web server on `/api/speech`. First 
 We use `multer` to upload our files directly in the `/uploads` folder by adding the following lines in our `index.js` file:
 
 ```js
+const isProd = process.env.NODE_ENV === 'production'
 const multer = require('multer')
 
-const upload = multer({ dest: __dirname + '/uploads/' })
+const upload = multer({ dest: (isProd ? '/tmp' : __dirname) + '/uploads/' })
 
 app.post('/api/speech', upload.single('audio'), async (req, res) => {
     /* Process file here */
